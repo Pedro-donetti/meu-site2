@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</head>
+
+    <h1>Comentários</h1>
+    <div id="comments"></div>
+    <input type="text" id="commentInput" placeholder="Digite seu comentário">
+    <button onclick="addComment()">Enviar</button>
+
+    <script>
+      const users = {
+    'user1': { username: 'user1', comments: [] },
+    'user2': { username: 'user2', comments: [] },
+    // Adicione mais usuários conforme necessário
+};
+
+// Função para adicionar um comentário
+function addComment() {
+    const commentInput = document.getElementById('commentInput');
+    const commentText = commentInput.value;
+
+    if (commentText.trim() !== '') {
+        const username = getCurrentUser(); // Obtém o usuário atualmente logado
+
+        if (username) {
+            const comment = `${username}: ${commentText}`;
+            const commentsDiv = document.getElementById('comments');
+            commentsDiv.innerHTML += `<p>${comment}</p>`;
+            commentInput.value = '';
+
+            // Armazena o comentário no localStorage do usuário atual
+            users[username].comments.push(comment);
+            localStorage.setItem(username, JSON.stringify(users[username].comments));
+        } else {
+            alert('Faça login para comentar.');
+        }
+    }
+}
+
+// Função para obter o usuário atualmente logado (simulado)
+function getCurrentUser() {
+    // Implemente sua lógica de autenticação aqui (por exemplo, usando cookies ou tokens)
+    // Retorne o nome de usuário do usuário atualmente logado ou null se não houver login
+    // Neste exemplo, estamos apenas simulando dois usuários, 'user1' e 'user2'.
+    return 'user1'; // Altere conforme necessário
+}
+
+// Carrega os comentários do localStorage do usuário atual
+function loadComments() {
+    const username = getCurrentUser();
+    if (username && localStorage.getItem(username)) {
+        const comments = JSON.parse(localStorage.getItem(username));
+        const commentsDiv = document.getElementById('comments');
+        comments.forEach(comment => {
+            commentsDiv.innerHTML += `<p>${comment}</p>`;
+        });
+    }
+}
+
+// Carrega os comentários quando a página é carregada
+window.addEventListener('load', loadComments);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylef.css">  
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script> src='https://api.themoviedb.org/3/movie/11?api_key=1d9c771e4dd8047bb81c158cb1af5f8e'</script>
+    
+</head>
+
+<body>
+
+    <header>
+        <nav class="navegation">
+          <img src="Logotipo_Loja_Online-removebg-preview (1).png" class="img1" alt=""> 
+            <ul class="nav-menu">   
+             <li class="new-item"><a href="logado.html">INICIO</a></li>
+             <li class="new-item"><a href="noticia.html">NOTICIAS</a></li>
+             <li class="logo"><h1>ALEM DO FILME</h1> </li>
+             <li class="new-item"><a href="filme.html">FILMES 
+             </a></li>
+             <li class="new-item"><a href="criticos.html">SOBRE-NÓS</a></li>
+             <a href="perfil.html" class="material-symbols-outlined" style="font-size: 1vw;">
+             Conectado
+             </a>
+            </ul>
+            </nav>
+  </head>
+
+      <div class="container">
+          <div style="display: flex;" class="search-container">
+              <input type="text" id="search" placeholder="Digite o nome do filme">
+              <button style="margin-left: 10px;" id="search-button" >Pesquisar</button>
+          </div>
+          <div class="movie-container" id="movies"></div>
+          <div class="pagination" id="pagination"></div>
+      </div>
+  
+
+  <script src="search.js"></script>
+  <script src="logado.js"></script>
+
+
+
+
+</html>
+</body>
+</html>

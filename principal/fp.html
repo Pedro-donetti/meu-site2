@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme</title>
+    <link rel="stylesheet" href="stylefp.css">
+    <style>
+        html,body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .avaliacao {
+            display: flex;
+            justify-content: center;
+            width: 10%;
+            padding: 5px;
+            margin-top: -12px;
+            margin-bottom: 10px;
+        }
+        .star-icon {
+            list-style-type: none;
+            cursor: pointer;
+            color: #ffe500;
+            font-size: 30px;
+        }
+        .star-icon::before {
+            content: "\2605";
+        }
+        .star-icon.ativo ~ .star-icon::before {
+            content: "\2606";
+        }
+        .avaliacao:hover .star-icon::before {
+            content: "\2605";
+        }
+        .star-icon:hover ~ .star-icon::before {
+            content: "\2606";
+        }
+        .cast-image {
+            width: 100px;
+            object-fit: cover;
+            margin: 10px;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        input{
+            border-radius: 5px;
+            padding: 10px;
+            border-color: red;
+            box-shadow: black;
+            text-decoration: none;
+            margin: 10px;
+        }
+        button {
+            border-radius: 5px;
+            padding: 10px;
+            border-color: red;
+            box-shadow: black;
+            border: 4,5px;
+            color: rgb(0, 0, 0);
+            margin: 10px;
+        }
+        button:hover {
+            border-color: rgb(0, 0, 0);
+            box-shadow: black;
+            border: 4,5px;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+        .comments-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #comments {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img id="moviePoster" src="" alt="Nome do Filme">
+        </div>
+        <div class="movie-info">
+            <h1 id="movieTitle">Nome do Filme</h1>
+            <p>Título Original: <span id="originalTitle">Título Original do Filme</span></p>
+            <p>Data de Lançamento: <span id="releaseDate">Data de Lançamento do Filme</span></p>
+            <p>Duração: <span id="duration">Duração do Filme</span></p>
+            <p>Gênero: <span id="genre">Gênero do Filme</span></p>
+            <p>Resumo: <span id="overview">Resumo do Filme</span></p>
+            <p>Classificação: <span id="voteAverage">Classificação do Filme</span></p>
+        </div>
+    </div>
+    <div id="avaliacoes">
+        <!-- Avaliações serão exibidas aqui -->
+    </div>
+
+    <h1 style="margin-top: 20px; font-size: 20px;">Avalie esse filme</h1>
+    <form action="">
+        <ul class="avaliacao">
+            <li class="star-icon ativo" data-avaliacao="1"></li>
+            <li class="star-icon" data-avaliacao="2"></li>
+            <li class="star-icon" data-avaliacao="3"></li>
+            <li class="star-icon" data-avaliacao="4"></li>
+            <li class="star-icon" data-avaliacao="5"></li>
+        </ul>
+    </form>
+
+    <div class="comments-section">
+        <h2>Comentários</h2>
+        <div id="comments">
+            <!-- Os comentários serão exibidos aqui -->
+        </div>
+        <form>
+            <input type="text" id="name" placeholder="Seu nome" required>
+            <textarea id="commentText" placeholder="Adicione um comentário" required></textarea>
+            <button type="button" onclick="addComment()">Adicionar Comentário</button>
+        </form>
+    </div>
+    <h2>Onde Assistir</h2>
+    <ul id="streamingLinks">
+        <!-- Os links para serviços de streaming serão exibidos aqui -->
+    </ul>
+
+
+    <h2>Elenco</h2>
+    <ul id="cast">
+    </ul>
+
+    <script>
+        const apiKey = '1d9c771e4dd8047bb81c158cb1af5f8e'; // Substitua pela sua chave de API
+        const movieId = new URLSearchParams(window.location.search).get('id');
+        const movieDetailsContainer = document.getElementById('movieDetails');
+        const castElement = document.getElementById('cast');
+
+        // Função para buscar detalhes do filme por ID
+        async function getMovieDetails() {
+            const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=pt-BR`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // Exiba os detalhes do filme
+                const moviePoster = document.getElementById('moviePoster');
+                const movieTitle = document.getElementById('movieTitle');
+                const originalTitle = document.getElementById('originalTitle');
+                const releaseDate = document.getElementById('releaseDate');
+                const duration = document.getElementById('duration');
+                const genre = document.getElementById('genre');
+                const overview = document.getElementById('overview');
+                const voteAverage = document.getElementById('voteAverage');
+
+                moviePoster.src = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
+                movieTitle.textContent = data.title;
+                originalTitle.textContent = data.original_title;
+                releaseDate.textContent = data.release_date;
+                duration.textContent = `${data.runtime} minutos`; // Exibindo a duração em minutos
+                genre.textContent = data.genres.map(genre => genre.name).join(', '); // Exibindo todos os gêneros separados por vírgula
+                overview.textContent = data.overview;
+                voteAverage.textContent = data.vote_average;
+                
+
+                // Chame a função para buscar o elenco do filme
+                getCast();
+            } catch (error) {
+                console.error('Erro ao buscar detalhes do filme:', error);
+            }
+        }
+
+        // Função para buscar o elenco do filme
+        async function getCast() {
+            const castApiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
+
+            try {
+                const castResponse = await fetch(castApiUrl);
+                const castData = await castResponse.json();
+                const cast = castData.cast;
+
+                const castList = document.getElementById('cast');
+                for (const actor of cast) {
+                    const actorApiUrl = `https://api.themoviedb.org/3/person/${actor.id}?api_key=${apiKey}&language=pt-BR`;
+                    const actorResponse = await fetch(actorApiUrl);
+                    const actorData = await actorResponse.json();
+                    const listItem = document.createElement('li');
+                    const actorImage = `https://image.tmdb.org/t/p/w200/${actorData.profile_path}`;
+                    listItem.innerHTML = `
+                        <img class="cast-image" src="${actorImage}" alt="${actorData.name}">
+                        <h3>${actorData.name} as ${actor.character}</h3>
+                        <p>${actorData.biography}</p>
+                    `;
+                    castList.appendChild(listItem);
+                }
+            } catch (error) {
+                console.error('Erro ao buscar o elenco do filme:', error);
+            }
+        }
+
+        async function getAdditionalMovieDetails() {
+            const additionalApiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=external_ids&language=pt-BR`;
+
+            try {
+                const additionalResponse = await fetch(additionalApiUrl);
+                const additionalData = await additionalResponse.json();
+
+                // Exemplo de como acessar informações adicionais
+                const imdbId = additionalData.external_ids.imdb_id;
+                console.log('ID do IMDB:', imdbId);
+
+                // Você pode adicionar mais informações adicionais conforme necessário
+            } catch (error) {
+                console.error('Erro ao buscar detalhes adicionais do filme:', error);
+            }
+        }
+
+        // Chame a função para buscar detalhes do filme e detalhes adicionais
+        getMovieDetails();
+        getAdditionalMovieDetails();
+
+
+        async function getStreamingInfo() {
+    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=${apiKey}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        const streamingLinks = document.getElementById('streamingLinks');
+
+        // Verifique se há informações de streaming disponíveis
+        if (data.results && data.results.BR) {
+            const providers = data.results.BR;
+
+            // Obtenha os nomes dos serviços de streaming
+            const streamingNames = Object.keys(providers);
+
+            if (streamingNames.length > 0) {
+                const streamingList = document.createElement('ul');
+                streamingNames.forEach(provider => {
+                    if (streamingIcons[provider]) {
+                        const streamingItem = document.createElement('li');
+                        const streamingIcon = document.createElement('img');
+                        streamingIcon.src = streamingIcons[provider];
+                        streamingIcon.alt = provider;
+                        streamingItem.appendChild(streamingIcon);
+                        const streamingName = document.createElement('span');
+                        streamingName.textContent = provider;
+                        streamingItem.appendChild(streamingName);
+                        streamingList.appendChild(streamingItem);
+                    }
+                });
+                streamingLinks.appendChild(streamingList);
+            } else {
+                streamingLinks.innerHTML = 'Nenhum serviço de streaming encontrado.';
+            }
+        } else {
+            streamingLinks.innerHTML = 'Informações de streaming não disponíveis.';
+        }
+    } catch (error) {
+        console.error('Erro ao buscar informações de streaming:', error);
+    }
+}
+
+// Chame a função para buscar informações de streaming
+getStreamingInfo();
+
+        // Função para gerar um token exclusivo
+        function generateUniqueToken() {
+            return Math.random().toString(36).substring(2, 15);
+        }
+
+        // Função para adicionar um comentário
+        function addComment() {
+            const name = document.getElementById('name').value;
+            const commentText = document.getElementById('commentText').value;
+
+            if (commentText.trim() !== '') {
+                // Crie um objeto de comentário
+                const comment = {
+                    name: name,
+                    text: commentText
+                };
+
+                // Obtenha o token exclusivo para o filme atual
+                const movieToken = generateUniqueToken();
+
+                // Recupere os comentários existentes para este filme
+                const comments = JSON.parse(localStorage.getItem(`comments-${movieToken}`)) || [];
+
+                // Adicione o novo comentário aos comentários existentes
+                comments.push(comment);
+
+                // Armazene os comentários atualizados com base no token do filme
+                localStorage.setItem(`comments-${movieToken}`, JSON.stringify(comments));
+
+                // Limpe o textarea
+                document.getElementById('commentText').value = '';
+
+                // Exiba os comentários atualizados
+                displayComments(movieToken);
+            }
+        }
+
+        // Função para exibir os comentários
+        function displayComments(movieToken) {
+            // Recupere os comentários com base no token do filme
+            const comments = JSON.parse(localStorage.getItem(`comments-${movieToken}`)) || [];
+            const commentsDiv = document.getElementById('comments');
+            commentsDiv.innerHTML = '';
+
+            comments.forEach((comment, index) => {
+                const commentDiv = document.createElement('div');
+                commentDiv.innerHTML = `<strong>${comment.name}:</strong> ${comment.text}`;
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Excluir';
+                deleteButton.addEventListener('click', () => deleteComment(index, movieToken));
+                commentDiv.appendChild(deleteButton);
+                commentsDiv.appendChild(commentDiv);
+            });
+        }
+
+        // Função para apagar um comentário
+        function deleteComment(index, movieToken) {
+            let comments = JSON.parse(localStorage.getItem(`comments-${movieToken}`)) || [];
+            comments.splice(index, 1);
+            localStorage.setItem(`comments-${movieToken}`, JSON.stringify(comments));
+            displayComments(movieToken);
+        }
+
+        // Exibe os comentários quando a página carrega
+        displayComments(movieId); // Aqui, você pode usar o ID do filme como token exclusivo
+
+        
+
+    </script>
+    <script src="coments.js"></script>
+</body>
+</html>

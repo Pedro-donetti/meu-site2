@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alem do Filme</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonwebtoken/8.5.1/jsonwebtoken.min.js"></script>
+</head>
+<body>
+    <div class="conteiner">
+        <div class="card">
+            <h1>SEJA BEM VINDO</h1>
+            <h1>AO ALEM DO FILME</h1>
+            <div id='msgError'></div>
+        
+           <form action="" method="post">
+            <div class='label-float'>
+              <input type='text' id='usuario' placeholder='' required>
+              <label id='userLabel' for='usuario'>Usuario</label>
+            </div>
+            
+            <div class='label-float'>
+              <input type='password' id='senha' placeholder='' required>
+              <label id='senhaLabel' for='senha'>Senha</label>
+              <i id="showPassword" class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+
+            <div class="justify-center">
+                <button type="button" onclick='logar()'>Entrar</button>
+            </div>
+
+            <div>
+                <hr>
+            
+            </div>
+
+            <p>Nao tem uma conta?
+                <a href="registro.html">Cadastre-se</a>
+            </p>
+           </form>
+        </div>
+    </div>
+    <script src="login.js"></script>
+    <script> function togglePasswordVisibility() {
+        const senhaInput = document.querySelector('#senha');
+        const eyeIcon = document.querySelector('#showPassword');
+
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            senhaInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+
+    document.querySelector('#showPassword').addEventListener('click', togglePasswordVisibility);</script>
+</body>
+</html>

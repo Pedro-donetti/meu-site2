@@ -1,0 +1,300 @@
+html {
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(4, 4, 4);
+    color: white;
+  }
+  
+  /* ########## Text Colors ########## */
+  .page {
+    margin: 0;
+    background-color: rgb(233, 233, 233);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.05em;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  /* ########## Max Width for Sections ########## */
+  .section-summary,
+  .section-cast {
+    max-width: 1400px;
+    align-self: center;
+    color: white;
+  }
+  
+  /* ########## Section Image ########## */
+  .main-image-container {
+    background-image: url('');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    z-index: 1;
+    margin: 0;
+  }
+  
+  /* ########## INSIDE of Main Image ########## */
+  .navigation {
+    list-style: none;
+    margin: 0;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .nav-item {
+    padding: 10px;
+    font-size: 1.2rem;
+    display: inline-block;
+  }
+  
+  .nav-item a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .lucifer {
+    font-size: 5rem;
+    text-decoration: none;
+    color: rgb(237, 39, 12);
+    font-weight: bold;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+  }
+  
+  .btn-stream {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px;
+    background-color: rgb(228, 61, 17);
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+    width: 160px;
+    margin: 0 auto 100px;
+    text-decoration: none;
+  }
+  
+  /* ########## INSIDE of Main Image, END ########## */
+  .section-videos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 2;
+    padding-top: 100px;
+    margin-top: -100px;
+  }
+  
+  /* Images of the thumbnails and there CSS can be
+     found in images.css */
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    width: 360px;
+    height: 200px;
+    text-align: center;
+    padding: 10px;
+    margin: -45px 15px 65px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+  
+  /* ########## Section of Summary ########## */
+  .section-summary {
+    margin: 60px 20px;
+  }
+  
+  .summary-header {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  .summary-body {
+    text-align: left;
+    padding: 0 15px 0;
+    font-size: 1.1rem;
+  }
+  
+  /* ########## Section of Cast ########## */
+  .section-cast {
+    margin: 60px 0;
+  }
+  
+  .cast-header {
+    text-align: center;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    margin: 0 20px 20px;
+  }
+  
+  .cast-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .cast-card {
+    border: 1px solid rgb(56, 56, 56);
+    width: 300px;
+    padding: 0 15px 200px;
+    margin: 10px;
+  }
+  
+  .cast-card-header {
+    padding: 10px 0;
+    color: rgb(218, 218, 218);
+  }
+  
+  /* Images and css of Cast Members can be fount in images.css */
+  .cast-body {
+    margin-top: -180px;
+    color: rgba(0, 0, 0, 0);
+  }
+  
+  /* ########## Section of Cast ########## */
+  .footer {
+    border-top: 1px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+  }
+  
+  .footer a {
+    color: rgb(240, 75, 53);
+  }
+  
+  .about {
+    text-align: left;
+    color: rgb(238, 238, 238);
+    max-width: 600px;
+    padding: 15px;
+  }
+  
+  .credits {
+    text-align: left;
+    min-width: 300px;
+    padding: 15px 20px 0;
+  }
+  
+  .developer {
+    text-align: center;
+    max-width: 800px;
+    padding: 15px 0;
+  }
+  
+  .fab {
+    padding: 15px;
+  }
+
+  
+  @media only screen and (max-width: 1200px) {
+    .credits {
+      min-width: 0;
+      width: 600px;
+    }
+  
+    .fab {
+      padding: 10px;
+    }
+  
+    .cast-card {
+      padding: 0 15px 0;
+    }
+  
+    .cast-card-header {
+      color: rgb(230, 75, 48);
+    }
+  
+    .cast-body {
+      display: block;
+      margin-top: 25px;
+      color: rgb(255, 255, 255);
+    }
+  }
+  
+  
+  /* YouTube thumbnail images */
+  .youtube-thumbnail-1 {
+    background-image: url('el1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  
+  .youtube-thumbnail-2 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/seasonSix320x180.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  .youtube-thumbnail-3 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/funnyMoments422x201.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  /* Cast Mebers Images */
+  .cast-img-1 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/lucifer420x420.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }
+  
+  .cast-img-2 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/chloe420x420.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }
+  
+  .cast-img-3 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/amenadiel412x412.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }
+  
+  .cast-img-4 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/mazikeen420x420.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }
+  
+  .cast-img-5 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/dan420x420.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }
+  
+  .cast-img-6 {
+    background-image: url('https://raw.githubusercontent.com/erickkg/WebProjects2020/master/LuciferShow/src/img/ella420x420.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 230px;
+  }

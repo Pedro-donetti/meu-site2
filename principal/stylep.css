@@ -1,0 +1,309 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@1,700&display=swap');
+
+
+
+
+
+*{
+   min-width: none;
+   min-height: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    list-style: none;
+    text-decoration: none;
+    
+ }
+
+
+html, body{
+    color: white;
+    background:linear-gradient( #53130a, black) ;
+  height: 80vw;
+  
+ }
+ .img{
+    
+   margin-left: 10px;
+   padding: 0px;
+   width: 10%;
+   justify-content: start;
+   height: 10%;
+}
+
+ .navegation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    box-shadow: 0 0.7rem 0.7rem #f4f4f4;
+   width: 100%;
+   background: #000000;
+   transition: all 0.5s;
+     
+      }
+
+ .navegation .logo{
+    padding: 10px;
+    font-size: 1.7rem;
+    font-weight: 300;
+ }
+
+ 
+
+ .navegation ul{
+   display: flex;
+   align-items: center;
+   gap: 7rem;
+   width: 100%;
+   justify-content: center;
+
+}
+ 
+
+ .navegation ul li a{
+font-size: 15px;
+font-weight: 500;
+transition: all 0.5s;
+color: #ffffff;
+ }
+ .navegation ul li a:hover{
+color: #8b1b0c;    
+ }
+.navegation i{
+
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.5s;
+    width: 5px;
+
+}
+
+.navegation i:hover{
+
+    color: #8b1b0c;
+   
+}
+
+.card-pai div h5 button p {
+
+width: 20%;
+
+}
+
+.card-pai{
+
+display: flex;
+flex-wrap: nowrap;
+
+}
+
+
+   .card {
+      font-family: 'Anton', sans-serif ;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      margin-left: 50px;
+      padding: 30px;
+      border-radius: 10px;
+      width: 28vw;
+      height: 14vw;
+      border-left: 3px solid #FA320A;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-color: #fefefe;
+      box-shadow: 0 0.7rem 0.7rem;
+}
+
+.card-body{
+  
+   font-size: 0.9rem;
+   width: 0S;
+   padding: 2px;
+   margin-left: 5px;
+   font-family: 'Poppins',sans-serif;
+   
+}
+
+.card-title{
+   font-size: 1.3rem;
+font-weight: 100;
+font-family: 'Poppins','sans-serif';
+}
+
+
+.capition{
+      min-height: 80px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 25px;
+      margin: auto 15px;
+      padding: 10px;
+      overflow: hidden;
+      border-left: 3px solid #FA320A;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: var(--white);
+}
+
+
+ img{
+margin-top: -10px;
+width: 22vw;
+height: 12vw;
+
+
+
+}
+
+
+.btn {
+	background-color: white;
+	border-radius: 10px;
+	border: 3px solid rgb(174, 38, 38);
+	color: black;
+	cursor: pointer;
+	font-size: 0.8rem;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
+	padding: 0.5rem 2rem;
+	text-transform: uppercase;
+	transition: all 0.3s ease-in-out;
+   margin-top: 10px;
+}
+
+div .btn :hover{
+   background-color: #8b1b0c;
+
+
+}
+
+.div .btn {
+	margin-top: 1.5rem;
+}
+
+.btn:active {
+
+	transform: scale(0.95);
+}
+
+.btn:focus {
+	outline: none;
+}
+
+ 
+ .material-symbols-outlined{
+
+   color: white;
+
+
+ }
+
+
+ .carousel-team-card {
+   margin-top: 50px;
+   display: flex;
+   justify-content: center;
+ }
+ 
+ .carousel-team-card-cell {
+   width: 25vw;
+    margin: 41px 20px 23px 20px;
+    background: #161616;
+    min-height: 397px;
+    height: 38vw;
+    border-radius: 10px;
+    box-shadow: 0 0.7rem 0.7rem #f4f4f4;
+ }
+ 
+ .carousel-team-card-cell * {
+ color: #ffffff;
+ }
+ 
+ .carousel-team-card-cell.doctor {
+ background: red;
+ }
+ 
+ .carousel-team-card-cell.cardio {
+ background: red;
+ }
+ 
+ .carousel-team-card-cell.physio {
+ background: red;
+ }
+ 
+ .carousel-team-card .flickity-prev-next-button.previous {
+   right: 0px;
+    top: 50vw;
+}
+ 
+ 
+ .carousel-team-card .flickity-prev-next-button.next {
+   right: 0px;
+   top: 50vw;
+} 
+ 
+ .carousel-team-card-cell .carousel-card-team {
+   text-align: center;
+   border-radius: 10px;
+ }
+ 
+ .carousel-team-card-cell .card-team-img {
+   width: 100%;
+   padding: 10px;
+   margin: 20px auto 0;
+ }
+ 
+ .carousel-team-card-cell .card-team-img img {
+   border-radius: 50%;
+   border: 5px solid white;
+   max-width: 150px;
+   -o-object-fit: cover;
+   -o-object-position: center;
+   object-fit: cover;
+   object-position: center;
+   width: 100%;
+   height: 150px;
+ }
+ 
+ .carousel-team-card-cell .card-team-name {
+   margin: 20px 0;
+   padding: 0px 40px 0 40px;
+ }
+ 
+ .carousel-team-card-cell .card-team-content p {
+   font-size: 14px;
+   margin-bottom: 0;
+ }
+ 
+ .carousel-team-card-cell .card-team-content {
+   margin: 0 40px 30px 40px;
+   border-bottom: 1px solid white;
+   padding-bottom: 30px;
+ }
+
+
+ .carousel-team-card .flickity-prev-next-button.previous {
+
+   left: 0px;
+   top: 50vw;
+}
+
+
+
+footer {
+   background-color: #120402;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.instagram-icon {
+  color: #e4405f; /* Cor padrão do Instagram */
+  font-size: 24px; /* Tamanho do ícone */
+}
+
+
